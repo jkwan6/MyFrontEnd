@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+
+
+
 
 @Component({
   selector: 'app-root',
@@ -7,17 +10,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public forecasts?: WeatherForecast[];
 
-  constructor(http: HttpClient) {
+  hasNetworkConnection: boolean = true;
+  hasInternetAccess: boolean = true;
+
+  constructor() { }
+
+  public isOnline() {
+    return this.hasNetworkConnection && this.hasInternetAccess;
   }
 
-  title = 'MyFrontEnd';
-}
 
-interface WeatherForecast {
-  date: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
 }
